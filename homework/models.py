@@ -35,7 +35,7 @@ class Product:
         if self.check_quantity(quantity):
             self.quantity = self.quantity - quantity
         else:
-            return ValueError
+            raise ValueError
 
     def __hash__(self) -> hash:
         return hash(self.name + self.description)

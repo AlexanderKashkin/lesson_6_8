@@ -37,11 +37,13 @@ class TestProducts:
         product_book.buy(quantity)
         assert product_book.quantity == result
 
-    @pytest.mark.parametrize('quantity, result', [(1500, ValueError),
-                                                  (20000, ValueError),
-                                                  (850123, ValueError)])
+    @pytest.mark.parametrize('quantity, result', [(1500, 'ValueError'),
+                                                  (20000, 'ValueError'),
+                                                  (850123, 'ValueError')])
     def test_product_buy_more_than_available(self, product_book: Product, quantity: int, result: ValueError):
-        assert product_book.buy(quantity) == result
+        with pytest.raises(ValueError) as exception:
+            product_book.buy(quantity)
+        assert exception.typename == result
 
 
 class TestCart:
