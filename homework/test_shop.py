@@ -77,7 +77,8 @@ class TestCart:
     @pytest.mark.parametrize('buy_count, remove_count, result',
                              [(150, 140, 10),
                               (150, 130, 20),
-                              (150, 120, 30)])
+                              (150, 120, 30),
+                              (150, 150, 0)])
     def test_remove_product_positive(self, product_book: Product, buy_count: int, remove_count: int,
                                      result: int):
         cart = Cart()
