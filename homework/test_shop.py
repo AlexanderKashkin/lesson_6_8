@@ -123,4 +123,5 @@ class TestCart:
     def test_buy_negative(self, product_book: Product):
         cart = Cart()
         cart.add_product(product_book, buy_count=10100)
-        assert cart.buy() == ValueError
+        with pytest.raises(ValueError):
+            assert cart.buy() == ValueError
